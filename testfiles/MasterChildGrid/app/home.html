@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="app">
+<!--<head>
+    <title></title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/customizedbs.css" rel="stylesheet" type="text/css" />
+</head>-->
+<head>
+    <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/customizedbs.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="bootstrap-multiselect.css" type="text/css">
+	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.11/angular-route.min.js"></script>
+    <script type="text/javascript" src="homeController.js"></script>
+
+
+     <script type="text/javascript" src="bootstrap-multiselect.js"></script>
+<script type="text/javascript">
+       $(document).ready(function() {
+           $('#multi-select-demo').multiselect();
+       });
+   </script>
+</head>
+<body>
+
+
+    <div class="navbar">
+        <ul class="nav nav-brand">
+            <H1>Perci FOF Report</H1>
+        </ul>
+    </div>
+
+   <div class="container">
+
+
+   <select id="multi-select-demo" multiple="multiple">
+       <option value="jQuery">VGEQFA</option>
+       <option value="Bootstrap">VGFIGA</option>
+       <option value="HTML">HTML</option>
+       <option value="CSS">CSS tricks</option>
+       <option value="angular">Angular JS</option>
+   </select>
+</div>
+
+    <!--PlaceHolder for Views-->
+    <div data-ng-controller="homeController">
+        <div class="container">
+            <div class="row panel-heading bgOrg">
+                <div class="col-sm-1 col-xs-12 pull-left">#</div>
+                <div class="col-sm-2 col-xs-12">Fund Code</div>
+                <div class="col-sm-3 col-xs-12">Fund Description</div>
+                <div class="col-sm-2 col-xs-12">Total Cashflow</div>
+		</div>
+
+            <div ng-repeat="product in products">
+                <div class="row panel panel-body">
+                    <div class="col-xs-1">
+                        <div class="handpointer glyphicon glyphicon-chevron-right" data-ng-click="collapse($event)" data-target="#view_{{product.productid}}" data-toggle="collapse"
+                             aria-expanded="false"
+                             data-ng-if="product.items!=null">
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-12" data-ng-bind="product.productid"></div>
+                    <div class="col-sm-3 col-xs-12" data-ng-bind="product.productname"></div>
+                    <div class="col-sm-2 col-xs-12" data-ng-bind="product.amount | currency"></div>
+                    <div class="col-xs-2 col-xs-1" data-ng-bind="product.availablity"></div>
+                </div>
+
+                <div class="collapse" id="view_{{product.productid}}" data-ng-if="product.items!=null">
+                    <div class="col-sm-offset-1">
+                        <table class="table-condensed responsive-table">
+                            <tr class="row">
+                                <th>Portfolio Number</th>
+                                <th>Fund Code</th>
+                                <th>Amount</th>
+                                <th>CashFlow Type</th>
+                            </tr>
+                            <tr class="row" ng-repeat="item in product.items">
+                                <td data-ng-bind="item.prodDetailId"></td>
+                                <td data-ng-bind="item.prodDetailDesc"></td>
+                                <td data-ng-bind="item.amount | currency"></td>
+                                <td data-ng-bind="item.qty"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+    <script src="https://code.angularjs.org/1.3.11/angular-route.min.js"></script>
+    <script type="text/javascript" src="homeController.js"></script>
+
+</body>
+</html>
